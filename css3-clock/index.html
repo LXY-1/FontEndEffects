@@ -1,0 +1,54 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: lxw
+ * @Date: 2019-12-31 09:44:34
+ * @LastEditors  : lxw
+ * @LastEditTime : 2019-12-31 16:52:14
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="font-effect css3 colock css3时钟特效">
+    <title>css3 时钟特效</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div id="clock-wrap" class="clock-wrap">
+        <h2>THE TIME IS NOW</h2>
+        <div class="time">
+            <div><span id="hour">00</span><span>Hours</span></div>
+            <div><span id="minute">00</span><span>Minutes</span></div>
+            <div><span id="second">00</span><span>Seconds</span></div>
+        </div>
+
+    </div>
+
+    <script src="./js/clock.js"></script>
+    <script>
+        // 封装一个时间倒计时的模块autoClock：通过回调函数返回 小时 + 分钟 + 秒数
+        // 接收一个obj参数：{hours:,minutes:,seconds:}，需要设置哪一个参数就设置哪一个比如{hours:12}小时就从12开始，默认都是从当前时间开始
+        //接收一个一个回调函数，使用回调函数把信息返回到需要的地方可以实现更高的灵活性，你可以根据你的业务需要在回调函数里面执行相关的业务逻辑
+        console.log(autoClock);
+        function beginMyTime() {
+            let hourEle = document.getElementById('hour')
+            let minuteEle = document.getElementById('minute')
+            let secondEle = document.getElementById('second')
+            autoClock({}, (hours, minutes, seconds) => {
+                hourEle.innerText = hours
+                minuteEle.innerText = minutes
+                secondEle.innerText = seconds
+            })
+        }
+        beginMyTime()
+
+    </script>
+</body>
+
+</html>

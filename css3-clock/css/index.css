@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'fontnameRegular';
+    src: url('../font/fontname.ttf');
+    /* src: local('fontname Regular'),
+   local('fontname'),
+   url('../font/fontname.ttf') format('truetype'),
+   url('fontname.svg#fontname') format('svg'); */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #060a1f;
+}
+
+.clock-wrap {
+    color: #fff;
+}
+
+.clock-wrap h2 {
+    font-family: fontnameRegular, 'Courier New', Courier, monospace;
+    font-weight: 900;
+    margin: 10px 0;
+    font-size: 1.4em;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.clock-wrap .time {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+}
+
+.clock-wrap .time div {
+    margin-right: 10px;
+}
+
+.clock-wrap .time div span {
+    display: block;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    line-height: 120px;
+    font-size: 2em;
+    font-weight: 900;
+    background: #2196f3;
+    z-index: 10;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+}
+
+.clock-wrap .time div span:nth-child(2) {
+    font-size: .8em;
+    height: 40px;
+    line-height: 40px;
+    background: #127fd6;
+    z-index: 9;
+    box-shadow: none;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+.clock-wrap .time div:last-child span {
+    background: #ff006a;
+}
+
+.clock-wrap .time div:last-child span:nth-child(2) {
+    background: #ec0062;
+}
