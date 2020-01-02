@@ -1,0 +1,120 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: lxw
+ * @Date: 2020-01-02 22:31:28
+ * @LastEditors  : lxw
+ * @LastEditTime : 2020-01-02 23:58:37
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="css3光反射 css过渡 cssbefore与after">
+    <title>css3 光反射按钮</title>
+    <style>
+        @font-face {
+            font-family: 'calligraphy';
+            src: url('./font/书体坊兰亭体I.ttf');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box;/*ie盒子模型*/
+        }
+        .reflaction-wrap {
+            width: 250px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .reflaction-wrap h3{
+            font-family: calligraphy, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #000;
+            font-weight: 900;
+            font-size: 26px;
+        }
+        .reflection-btn {
+          text-decoration: none;
+          display: inline-block;
+          width: 140px;
+          height:40px;
+          /*注意：由于设置是ie盒子模型，padding和border都算进去content的height和width，所以实际内容的height是32px（40 - 8 ） 所以居中的line-height设置为32*/
+          line-height: 32px;
+          font-weight: 900;
+          text-align: center;
+          font-size: 1.1em;
+          letter-spacing: .1em;
+          position: relative;
+        }
+        .effect {
+            background: #000;
+            color: #fff;
+            border: 4px solid #000;
+            overflow: hidden;
+            /* 参数：水平阴影、垂直阴影、模糊距离、阴影大小、阴影大小 阴影颜色、阴影模式：可以设置内测阴影：inset*/
+            box-shadow: 0 0 0 1px #000 inset;
+        }
+        .effect:hover{
+            border: 4px solid #666;
+            background: #fff;
+            color: #000;
+            box-shadow: 0 0 0 4px #eee inset;
+        }
+        .effect span{
+            font-family: calligraphy, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            transition: all 0.2s ease-out;
+            z-index: 2;
+        }
+        .effect:hover span{
+            letter-spacing: 0.13em;
+            color: #333;
+        }
+        /*镜面光反射的核心：超出部分隐藏+清晰的带粗border的绝对定位的div移动过去，调节尺寸与其他位置参数、过渡时间效果等参数可以让它*/
+        /*把上面的overflow:hiden去掉，鼠标放上去就可以看到它实现的原理了*/
+        /*子层绝对定位，超出隐藏，设置旋转角度等，动画或者是过渡移动可以实现很多好看的效果，看起来好像很难实现其实原理不难，只是看你对这些效果的理解和对css相关属性的梳洗*/
+        .effect::after{
+            content: '';
+            background: #fff;
+            border: 0px solid #000;
+            height: 155px;
+            width: 55px;
+            left: -81px;
+            opacity: .8;
+            position: absolute;
+            top: -50px;
+            transform: rotate(35deg);
+            -webkit-transform: rotate(35deg);
+            transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            z-index: 1;
+        }
+        .effect:hover::after{
+            background: #fff;
+            opacity: 0;
+            border: 20px solid #000;
+            left: 120%;
+            transform: rotate(40deg);
+            -webkit-transform: rotate(40deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reflaction-wrap">
+        <h3>Light Reflection</h3>
+        <div class="reflection-btn-wrap">
+            <a href="#" class="reflection-btn effect">
+                <span>注册</span>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>
